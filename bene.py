@@ -7,8 +7,10 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # Interface do Streamlit
 with st.sidebar:
-    st.sidebar.subheader('BENEFICIOS DA FAMILIA')
-    st.sidebar.markdown("versão 1.0")
+    st.image('Calculadora.jpeg', width=120)
+
+    st.sidebar.subheader('CALCULADORA DE BENEFICIOS')
+    st.sidebar.markdown("versão 1.1")
 
     choose = option_menu("Menu", ["Sobre", "Bolsa Familia", "Cestas Basicas", "Auxilio Leite", "Fraldas"],
                          icons=['house', 'camera fill', 'kanban', 'person lines fill'],
@@ -26,6 +28,18 @@ if choose == "Sobre":
     font-size:25px ; font-family: 'Black'; color: #FF9633;} 
     </style> """, unsafe_allow_html=True)
     st.markdown('<p class="font">Sobre</p>', unsafe_allow_html=True)
+    st.markdown('CALCULADORA DE BENEFICIOS')
+    st.markdown('')
+    st.markdown('''
+                A "Calculadora de Benefícios" é uma aplicação ou ferramenta projetada para ajudar indivíduos a determinar os benefícios financeiros ou assistenciais a que têm direito com base em certos critérios específicos. Esses critérios podem incluir idade, estado civil, renda, número de dependentes, entre outros fatores relevantes.
+
+                Funcionalidades Principais:
+
+                Cálculo de Benefícios: A principal funcionalidade da calculadora é calcular os benefícios disponíveis para um determinado usuário com base nas informações fornecidas. Isso pode incluir benefícios previdenciários, benefícios assistenciais do governo, subsídios, abonos, entre outros.
+
+                Entrada de Dados: A calculadora permite que o usuário insira informações relevantes, como renda familiar, 
+                número de dependentes, entre outros. Essas informações são essenciais para determinar os benefícios aos quais o usuário pode ter direito.                
+                ''')
 elif choose == "Bolsa Familia":
     st.markdown(""" <style> .font {
     font-size:25px ; font-family: 'Black'; color: #FF9633;} 
