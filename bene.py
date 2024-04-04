@@ -33,10 +33,14 @@ elif choose == "Bolsa Familia":
     st.markdown('<p class="font">Bolsa Familia</p>', unsafe_allow_html=True)
     st.text('Valor Base por pessoa: 218,00')
     st.text('Valor Minimo: 600,00')
+    st.text('Salário Minimo: 1412,00')
+    sal_minimo = 1412.00
     base = 218.00
     minimo = 600.00
     renda = st.number_input('Renda da Familia')
     n_pessoas = st.number_input('Numero de Pessoas',min_value=1)
+    gestantes = st.number_input('Numero de Gestantes',min_value=0)
+
     col1, col2, col3, col4, col5, col6, col7, col8, col9, col10 = st.columns(10)
 
     with col1:
@@ -85,62 +89,63 @@ elif choose == "Bolsa Familia":
             st.error('O numero total de pessoas não confere !')
         else:
             st.text('Renda percapita: ' + str(renda/n_pessoas))
-            if renda/n_pessoas > base:
-                minimo = 0
-
-            st.markdown('BENEFICIOS DA FAMILIA')
-            t1 = t2 = t3 = t4 = t5 = t6 = t7 = t8 = t9 = t10 =0
-            if idade_1 > 0 and idade_1 < 7 and renda/n_pessoas <= base:
-                t1 = 150.00
-            if idade_1 > 0 and idade_1 >= 7 and idade_1 <= 15 and renda/n_pessoas <= base:
-                t1 = 50.00
-            if idade_2 > 0 and idade_2 < 7 and renda/n_pessoas <= base:
-                t2 = 150.00
-            if idade_2 > 0 and idade_2 >= 7 and idade_2 <= 15 and renda/n_pessoas <= base:
-                t2 = 50.00
-            if idade_3 > 0 and idade_3 < 7 and renda/n_pessoas <= base:
-                t3 = 150.00
-            if idade_3 > 0 and idade_3 >= 7 and idade_3 <= 15 and renda/n_pessoas <= base:
-                t3 = 50.00
-            if idade_4 > 0 and idade_4 < 7 and renda/n_pessoas <= base:
-                t4 = 150.00
-            if idade_4 > 0 and idade_4 >= 7 and idade_4 <= 15 and renda/n_pessoas <= base:
-                t4 = 50.00
-            if idade_5 > 0 and idade_5 < 7 and renda/n_pessoas <= base:
-                t5 = 150.00
-            if idade_5 > 0 and idade_5 >= 7 and idade_5 <= 15 and renda/n_pessoas <= base:
-                t5 = 50.00
-            if idade_6 > 0 and idade_6 < 7 and renda/n_pessoas <= base:
-                t6 = 150.00
-            if idade_6 > 0 and idade_6 >= 7 and idade_6 <= 15 and renda/n_pessoas <= base:
-                t6 = 50.00
-            if idade_7 > 0 and idade_7 < 7 and renda/n_pessoas <= base:
-                t7 = 150.00
-            if idade_7 > 0 and idade_7 >= 7 and idade_7 <= 15 and renda/n_pessoas <= base:
-                t7 = 50.00
-            if idade_8 > 0 and idade_8 < 7 and renda/n_pessoas <= base:
-                t8 = 150.00
-            if idade_8 > 0 and idade_8 >= 7 and idade_8 <= 15 and renda/n_pessoas <= base:
-                t8 = 50.00
-            if idade_9 > 0 and idade_9 < 7 and renda/n_pessoas <= base:
-                t9 = 150.00
-            if idade_9 > 0 and idade_9 >= 7 and idade_9 <= 15 and renda/n_pessoas <= base:
-                t9 = 50.00
-            if idade_10 > 0 and idade_10 < 7 and renda/n_pessoas <= base:
-                t10 = 150.00
-            if idade_10 > 0 and idade_10 >= 7 and idade_10 <= 15 and renda/n_pessoas <= base:
-                t10 = 50.00
-            st.text('Idade: ' + str(idade_1) + ' Valor: ' + str(t1))
-            st.text('Idade: ' + str(idade_2) + ' Valor: ' + str(t2))
-            st.text('Idade: ' + str(idade_3) + ' Valor: ' + str(t3))        
-            st.text('Idade: ' + str(idade_4) + ' Valor: ' + str(t4))
-            st.text('Idade: ' + str(idade_5) + ' Valor: ' + str(t5))
-            st.text('Idade: ' + str(idade_6) + ' Valor: ' + str(t6))
-            st.text('Idade: ' + str(idade_7) + ' Valor: ' + str(t7))
-            st.text('Idade: ' + str(idade_8) + ' Valor: ' + str(t8))
-            st.text('Idade: ' + str(idade_9) + ' Valor: ' + str(t9))
-            st.text('Idade: ' + str(idade_10) + ' Valor: ' + str(t10))
-            st.markdown('TOTAL DOS BENEFICIOS: ' + str(t1+t2+t3+t4+t5+t6+t7+t8+t9+t10+minimo))
+            if renda/n_pessoas <= base:
+                st.markdown('BENEFICIOS DA FAMILIA')
+                t1 = t2 = t3 = t4 = t5 = t6 = t7 = t8 = t9 = t10 =0
+                if idade_1 > 0 and idade_1 < 7 and renda/n_pessoas <= base:
+                    t1 = 150.00
+                if idade_1 > 0 and idade_1 >= 7 and idade_1 <= 15 and renda/n_pessoas <= base:
+                    t1 = 50.00
+                if idade_2 > 0 and idade_2 < 7 and renda/n_pessoas <= base:
+                    t2 = 150.00
+                if idade_2 > 0 and idade_2 >= 7 and idade_2 <= 15 and renda/n_pessoas <= base:
+                    t2 = 50.00
+                if idade_3 > 0 and idade_3 < 7 and renda/n_pessoas <= base:
+                    t3 = 150.00
+                if idade_3 > 0 and idade_3 >= 7 and idade_3 <= 15 and renda/n_pessoas <= base:
+                    t3 = 50.00
+                if idade_4 > 0 and idade_4 < 7 and renda/n_pessoas <= base:
+                    t4 = 150.00
+                if idade_4 > 0 and idade_4 >= 7 and idade_4 <= 15 and renda/n_pessoas <= base:
+                    t4 = 50.00
+                if idade_5 > 0 and idade_5 < 7 and renda/n_pessoas <= base:
+                    t5 = 150.00
+                if idade_5 > 0 and idade_5 >= 7 and idade_5 <= 15 and renda/n_pessoas <= base:
+                    t5 = 50.00
+                if idade_6 > 0 and idade_6 < 7 and renda/n_pessoas <= base:
+                    t6 = 150.00
+                if idade_6 > 0 and idade_6 >= 7 and idade_6 <= 15 and renda/n_pessoas <= base:
+                    t6 = 50.00
+                if idade_7 > 0 and idade_7 < 7 and renda/n_pessoas <= base:
+                    t7 = 150.00
+                if idade_7 > 0 and idade_7 >= 7 and idade_7 <= 15 and renda/n_pessoas <= base:
+                    t7 = 50.00
+                if idade_8 > 0 and idade_8 < 7 and renda/n_pessoas <= base:
+                    t8 = 150.00
+                if idade_8 > 0 and idade_8 >= 7 and idade_8 <= 15 and renda/n_pessoas <= base:
+                    t8 = 50.00
+                if idade_9 > 0 and idade_9 < 7 and renda/n_pessoas <= base:
+                    t9 = 150.00
+                if idade_9 > 0 and idade_9 >= 7 and idade_9 <= 15 and renda/n_pessoas <= base:
+                    t9 = 50.00
+                if idade_10 > 0 and idade_10 < 7 and renda/n_pessoas <= base:
+                    t10 = 150.00
+                if idade_10 > 0 and idade_10 >= 7 and idade_10 <= 15 and renda/n_pessoas <= base:
+                    t10 = 50.00
+                st.text('Idade: ' + str(idade_1) + ' Valor: ' + str(t1))
+                st.text('Idade: ' + str(idade_2) + ' Valor: ' + str(t2))
+                st.text('Idade: ' + str(idade_3) + ' Valor: ' + str(t3))        
+                st.text('Idade: ' + str(idade_4) + ' Valor: ' + str(t4))
+                st.text('Idade: ' + str(idade_5) + ' Valor: ' + str(t5))
+                st.text('Idade: ' + str(idade_6) + ' Valor: ' + str(t6))
+                st.text('Idade: ' + str(idade_7) + ' Valor: ' + str(t7))
+                st.text('Idade: ' + str(idade_8) + ' Valor: ' + str(t8))
+                st.text('Idade: ' + str(idade_9) + ' Valor: ' + str(t9))
+                st.text('Idade: ' + str(idade_10) + ' Valor: ' + str(t10))
+                st.text('Gestante: ' + str(gestantes*50.00) )
+                st.markdown('TOTAL DOS BENEFICIOS: ' + str(t1+t2+t3+t4+t5+t6+t7+t8+t9+t10+minimo+(gestantes*50.00)))
+            elif renda/n_pessoas > base and renda <= sal_minimo:
+                st.markdown('PROCURE O CRAS !!!')
 
 
 elif choose == "Cestas Basicas":
